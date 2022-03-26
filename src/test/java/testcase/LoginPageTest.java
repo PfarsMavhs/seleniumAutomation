@@ -63,7 +63,7 @@ public class LoginPageTest extends CodeBase {
     @Test(priority = 1)
     public void loginPage()  throws InterruptedException{
        test =  extent.createTest("loginPage");
-        loginPage.login(prop.getProperty("username"),prop.getProperty("password"));
+        loginPage.login(prop.getProperty("username"),prop.getProperty("Password"));
     }
 
     @Test(priority = 2)

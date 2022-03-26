@@ -33,7 +33,7 @@ public class CodeBase {
     public static void initialization() throws InterruptedException {
         String browserName = prop.getProperty("browser");
 
-        if(browserName.equals("fox")){
+        if(browserName.equals("fireFox")){
             System.setProperty("webdriver.gecko.driver","browser-files//geckodriver.exe");
             driver = new FirefoxDriver();
         }
