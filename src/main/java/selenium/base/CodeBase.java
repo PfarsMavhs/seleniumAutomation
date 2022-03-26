@@ -21,7 +21,7 @@ public class CodeBase {
     public CodeBase(){
         try {
             prop = new Properties();
-            FileInputStream ip = new FileInputStream( "C://Users//siboi//eclipse-workspace//selenium//src//main//java//selenium//config//config//config.properties");
+            FileInputStream ip = new FileInputStream( "src//main//java//selenium//config//config.properties");
             prop.load(ip);
         }catch(FileNotFoundException e){
             e.printStackTrace();
@@ -30,25 +30,21 @@ public class CodeBase {
         }
     }
 
-    public static void initialization(){
+    public static void initialization() throws InterruptedException {
         String browserName = prop.getProperty("browser");
 
         if(browserName.equals("fox")){
-            System.setProperty("webdriver.gecko.driver","C://Users//siboi//Downloads//geckodriver-v0.30.0-win64//geckodriver.exe");
+            System.setProperty("webdriver.gecko.driver","browser-files//geckodriver.exe");
             driver = new FirefoxDriver();
         }
         else if(browserName.equals("chrome")){
-            System.setProperty("webdriver.chrome.driver","C://Users//siboi//Downloads//chromedriver_win32(2)//chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver","browser-files//chromedriver.exe");
             driver = new ChromeDriver();
         }
         driver.manage().window().maximize();
         driver.manage().deleteAllCookies();
-        driver.manage().timeouts().pageLoadTimeout(TestUtil.PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
-        //driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
-        driver.manage().timeouts().implicitlyWait(TestUtil.IMPLICIT_WAIT, TimeUnit.SECONDS);
+        Thread.sleep(2000);
         driver.get(prop.getProperty("url"));
-        driver.manage().timeouts().pageLoadTimeout(TestUtil.PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
-        driver.manage().timeouts().implicitlyWait(TestUtil.IMPLICIT_WAIT, TimeUnit.SECONDS);
     }
 
 

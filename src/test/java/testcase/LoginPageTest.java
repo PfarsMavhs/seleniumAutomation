@@ -31,14 +31,14 @@ public class LoginPageTest extends CodeBase {
     }
 
     @BeforeClass
-    public void setup(){
+    public void setup() throws InterruptedException{
         initialization();
         loginPage = new LoginPage();
 
     }
     @BeforeTest
     public void setExtentReport(){
-        sparkReporter = new ExtentSparkReporter(System.getProperty("user.dir")+"/test-output/citriiReport.html");
+        sparkReporter = new ExtentSparkReporter(System.getProperty("user.dir")+"/testing-report/citriiReport.html");
 
         sparkReporter.config().setDocumentTitle("Login Automation Report");
         sparkReporter.config().setReportName("Functional Report");
